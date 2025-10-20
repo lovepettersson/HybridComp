@@ -84,26 +84,7 @@ def optimize_numb_of_photon_sources_with_switch_loss(numb_switches=21, tot_switc
     print("With adjusted ration for required number of inputs in spatial mux: ", best_overhead * ratio_boosting)
     print("The amount of loss from switches is: ", best_switch_loss, ", and the delay loss is: ", best_delay_loss)
 
-# def count_max_temp_mux(numb_switches, tot_switch=21):
-#     # max_loss = 0.075  # shor encoding with global adapt
-#     max_loss = 0.008
-#     t_bin = 10 ** (-9)
-#     for numb_switch in range(1, numb_switches):
-#         N = (2 ** (numb_switch) - 1)  # Max delay line
-#         loss_delay_line = delay_loss(N, t_bin)
-#         if loss_delay_line > max_loss:
-#             print("Max # switches: ", numb_switch, loss_delay_line)
-#             print("Number of photon sources overhead from spatial in generating six-ring: ", 6 * 6 * 2 ** (tot_switch - numb_switch + 1))  # Need six photons per GHZ and we need 6 GHZ
-#             break
 
-#     t_bin = 10 ** (-9)
-#     tot_switch = 18  # 16 for p=0.1
-#     for numb_switch in range(1, numb_switches):
-#         N = (2 ** (numb_switch) - 1)
-#         loss_delay_line = delay_loss(N, t_bin)
-#         if loss_delay_line > max_loss:
-#             print("Number of photon sources overhead from spatial in boosted fusion entangled states: ", 12 * 6 * 2 ** (tot_switch - numb_switch + 1))
-#             break
 
 def only_spatial_switch_loss(tot_switch=21):
     dBS = np.linspace(0.01, 0.001, 4000)
@@ -439,6 +420,7 @@ if __name__ == '__main__':
     optimize_numb_of_photon_sources_with_switch_loss(21)
     print()
     estimate_opt_switch_ring_new(0.035)
+
 
 
 
