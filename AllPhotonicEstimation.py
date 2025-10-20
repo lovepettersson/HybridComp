@@ -357,7 +357,7 @@ def optimize_numb_of_photon_sources_with_switch_loss_type_1(numb_switches=17, to
     numb_entangled_states_boost = 6
     numb_photons_ring = 18
     numb_photons_boost = 12
-    max_loss = 0.008  # 0.007879279279279339 # 0.002
+    max_loss = 0.008  
     t_bin = 1 / (10 ** 9)
     switch_loss = 1 - 10 ** (-db / 10)
     best_overhead = 10 ** 12
@@ -411,6 +411,7 @@ if __name__ == '__main__':
                                                             ratio_ring=ratio_ring, ratio_boosting=ratio_boosted, db=db)
 
     print(2 ** 13 - 1, 2 ** 10 - 1)
+
 
 
 
