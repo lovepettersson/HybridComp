@@ -29,9 +29,6 @@ def erasure_meas_error_threshold_fit():
     p = np.poly1d(z)
     return p
 
-def error_fusion(epsilon):
-    eps = epsilon / 2
-    return 4 * (eps * (1 - 3 * eps) + (eps ** 2))
 
 
 def delay_loss(N, t_bin):
@@ -442,5 +439,6 @@ if __name__ == '__main__':
     optimize_numb_of_photon_sources_with_switch_loss(21)
     print()
     estimate_opt_switch_ring_new(0.035)
+
 
 
