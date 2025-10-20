@@ -116,8 +116,6 @@ def mux_plot_optimize_p(t_bells, linestyles, p_th=1):
                                             threshold_eta_spat = get_threshold_given_eps_in_optimize_func(eps_spin, rep_code_size ,spin_err=spin_photon_error)
                                             threshold_loss_spat = 1 - threshold_eta_spat
 
-                                            # spin_photon_error_in = (error_rate_erase) * (2 / 3)
-                                            # spin_photon_error_erase = 2 * spin_photon_error_in * (1 - spin_photon_error_in) + eps * (2 / 3)
                                             spin_photon_error_in = 2 * eps * (2 / 3) * (1 - eps * (2 / 3))  # The spin photon gate error is multiplied by two since we do the gate twice
                                             spin_photon_error_erase = spin_photon_error_in + error_rate_erase * (2 / 3)  # Error from two photon components are just added once
                                             threshold_eta_erase = get_threshold_given_eps_in_optimize_func(eps_spin, rep_code_size, spin_err=spin_photon_error_erase)
@@ -239,5 +237,6 @@ if __name__ == '__main__':
 
     t_bells = [9.5 * (10 ** (-9)), 9.5 * (10 ** (-9))]
     mux_plot_optimize_p(t_bells, linestyles)
+
 
 
