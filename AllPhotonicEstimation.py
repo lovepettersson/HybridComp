@@ -2,34 +2,6 @@ import numpy as np
 import math
 
 
-def erasure_boosted_fusion(eta, n):
-    p_f = (1 / 2) ** n
-    return 1 - (1 - p_f / 2) * (eta ** (1 / p_f))
-
-
-def best_loss_threshold_boosted():
-    etas = np.linspace(0.98, 0.9999, 600)
-    best_eta = 1
-    best_n = 0
-    for eta in etas:
-        for n in range(1, 4):
-            erase = erasure_boosted_fusion(eta, n)
-            if erase < 0.12:
-                if eta < best_eta:
-                    best_eta = eta
-                    best_n = n
-    print("Best boosting number: ", best_n)
-    return best_eta
-
-def erasure_meas_error_threshold_fit():
-    # Phenom. error and erasure threshold for six qubit ring found through Gaussian elim. and MWPM
-    error = [0.01046551724137931, 0.008863269777109873, 0.007630952468689918, 0.006450396110946164, 0.0055472183812063924, 0.0046879143162049, 0.0036724137931034495, 0.002724367348559638, 0.001490979180657437, 6.841130395236939e-19]
-    plot_erasure = [0, 0.01649657687835838, 0.029183754561433895, 0.038965517241379304, 0.04863020743628507, 0.058391048236745284, 0.06650477842165327, 0.07857774501399406, 0.08907416331555247, 0.11889655172413793]
-    z = np.polyfit(plot_erasure, error, 3)
-    p = np.poly1d(z)
-    return p
-
-
 
 def delay_loss(N, t_bin):
     # Delay loss using telecom photons and having a attenuation length of L_att = 20 km
@@ -411,6 +383,7 @@ if __name__ == '__main__':
                                                             ratio_ring=ratio_ring, ratio_boosting=ratio_boosted, db=db)
 
     print(2 ** 13 - 1, 2 ** 10 - 1)
+
 
 
 
