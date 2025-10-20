@@ -101,15 +101,15 @@ def mux_plot_optimize_p(t_bells, linestyles, p_th=1):
                                             multiplexing_loss = 1 - ((1 - switch_loss) ** (binary_sized_multi))  # Loss from the spatial multiplexing
                                             total_loss_with_multi = 1 - (1 - loss) * (1 - multiplexing_loss) * ((1 - switch_loss) ** (temporal_size + 1))  # total loss when doing spatial mux and temporal mux
                                             loss_from_detection = effective_loss_rate(pair_s, eta_spin_gate, 1 - total_loss_with_multi)
+                                            error_rate_spat = error_rate(pair_s, eta_spin_gate, 1 - total_loss_with_multi)
                                             total_loss_with_multi += loss_from_detection
 
                                             p_succ_as_erase = (1 - (1 - pair_s * eta_spin_gate) ** temp_numb_input)
                                             total_loss_with_photon_as_erase = (1 - p_succ_as_erase * (1 - loss) * ((1 - switch_loss) ** (temporal_size + 1 + 1))) # An additional to del with the discarding of spin errors
                                             loss_from_detection = effective_loss_rate(pair_s, eta_spin_gate, 1 - total_loss_with_photon_as_erase)
+                                            error_rate_erase = error_rate(pair_s, eta_spin_gate, 1 - total_loss_with_photon_as_erase)
                                             total_loss_with_photon_as_erase += loss_from_detection
 
-                                            error_rate_spat = error_rate(pair_s, eta_spin_gate, 1 - total_loss_with_multi)
-                                            error_rate_erase = error_rate(pair_s, eta_spin_gate, 1 - total_loss_with_photon_as_erase)
 
                                             spin_photon_error_in = 2 * eps * (2 / 3) * (1 - eps * (2 / 3)) 
                                             spin_photon_error = spin_photon_error_in + error_rate_spat * (2 / 3) 
@@ -237,6 +237,7 @@ if __name__ == '__main__':
 
     t_bells = [9.5 * (10 ** (-9)), 9.5 * (10 ** (-9))]
     mux_plot_optimize_p(t_bells, linestyles)
+
 
 
 
