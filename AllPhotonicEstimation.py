@@ -399,27 +399,19 @@ def optimize_numb_of_photon_sources_with_switch_loss_type_1(numb_switches=17, to
     print("Total overhead: ", best_overhead * ratio_boosting * numb_entangled_states_boost + overhead_ring)
 
 if __name__ == '__main__':
-    print("Best switch loss for hybrid!")
-    print()
-    best_switch_loss_hybrid()
-    print()
-    print("Going over to best switch loss for all photonic!")
-    print()
-    only_spatial_switch_loss()
-    print()
-    print("Estimate the required number of switches to generate a six-ring for all photonic!")
-    print()
-    estimate_opt_switch_ring(0.035)
-    print()
-    print("Estimate the required number of switches to generate the boosting states for all photonic!")
-    print()
-    estimate_opt_switch_boosting_new(0.035)
-    print()
-    print("Estimate the number of photon sources given 0.3 mDB of switch loss!")
-    print()
-    optimize_numb_of_photon_sources_with_switch_loss(21)
-    print()
-    estimate_opt_switch_ring_new(0.035)
+    p = 0.05
+    db = 0.0015
+    ratio_ring = 62 / 64
+    ratio_boosted = 63 / 64
+    numb_switches_ring = 17
+    numb_switches_boost = 15
+    estimate_opt_switch_ring_type_1(p)
+    estimate_opt_switch_boosting_parallel(p)
+    optimize_numb_of_photon_sources_with_switch_loss_type_1(numb_switches=numb_switches_ring, tot_switch_boost=numb_switches_boost,
+                                                            ratio_ring=ratio_ring, ratio_boosting=ratio_boosted, db=db)
+
+    print(2 ** 13 - 1, 2 ** 10 - 1)
+
 
 
 
