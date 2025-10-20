@@ -18,7 +18,6 @@ def mux_plot_optimize_p(t_bells, linestyles, p_th=1):
     epses = [0.01 / 100, 0.05 / 100]
     eta_spin_gates = [0.8, 0.9]
     handles = []
-    # dBS = np.linspace(0.0005, 0.003, 35)  # Max 0.001 eta=0.8 is around 3mDB
     pair_gen_probs = [0.001 * x for x in range(50, 91)]
     save_dict = {0:[], 1:[], 2:[], 3:[], 4:[], 5:[], 6:[], 7:[], 8:[]}
 
@@ -87,7 +86,6 @@ def mux_plot_optimize_p(t_bells, linestyles, p_th=1):
 
                                         # Find the binary size of a log tree for the spatial mux above
                                         # Want on average to get out 1 resource state, that is we need N*p = 1, giving N = 1 / p.
-                                        # However, we use logarithmic trees, thus we find the smallest sized tree that satisfy this
 
                                         binary_sized_multi = -1
                                         numb_spin_inputs = 0
@@ -241,4 +239,5 @@ if __name__ == '__main__':
 
     t_bells = [9.5 * (10 ** (-9)), 9.5 * (10 ** (-9))]
     mux_plot_optimize_p(t_bells, linestyles)
+
 
