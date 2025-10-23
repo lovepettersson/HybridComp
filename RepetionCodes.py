@@ -73,7 +73,7 @@ def logical_XX_error(n_attempt, eps):
 def no_spin_code_error_rate(n_attempt, eps, eta):
     # The average error rate of the two parities when not using a spin code to mitigate spin errors
     XX_succ = (eta ** 2) ** n_attempt
-    XX_error = logical_XX_error(n_attempt, eps) / XX_succ  # normalize by succ prob
+    XX_error = logical_XX_error(n_attempt, eps) 
     ZZ_error = logical_ZZ_error(eps, n_attempt, eta)  # Already normalized by success probability
     return ZZ_error + XX_error  # Both errors are already divided by two, so it is an average
 
@@ -86,7 +86,7 @@ def total_spin_code_error_rate(n, eps, eta, spin_err=0):
     eps_photonic = eps_in * (1 - spin_err) + spin_err * (1 - eps_in)
     XX_tot_err = error * (1 - spin_err) + spin_err * (1 - error)  # the X errors do not affect the XX parities as this is just combination of physical XX outcomes
     tot_eps = (eps_photonic) * (1 - error) + error * (1 - eps_photonic)
-    XX_err = logical_XX_error(n, XX_tot_err) / XX_succ
+    XX_err = logical_XX_error(n, XX_tot_err)
     ZZ_err = logical_ZZ_error(tot_eps, n, eta)  # Already normalized by success probability
     return XX_err + ZZ_err  # Both errors are already divided by two, so it is an average
 
@@ -578,3 +578,4 @@ if __name__ == '__main__':
     print(get_threshold_given_eps(eps, spin_err=spin_err))
     print(get_resource_state_overhead(eps))
     print(get_threshold_given_eps_in_optimize_func(eps, 5 ,spin_err=spin_err))
+
